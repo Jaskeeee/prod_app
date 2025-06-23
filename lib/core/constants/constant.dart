@@ -1,0 +1,1 @@
+final String googleSvg = 'assets/svgs/google-logo.svg';
