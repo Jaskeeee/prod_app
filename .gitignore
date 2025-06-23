@@ -43,3 +43,19 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Firebase emulators and config
+.firebase/
+firestore.indexes.json
+firestore.rules
+storage.rules
+
+# Firebase functions (Node.js)
+functions/node_modules/
+functions/lib/
+functions/.env
+functions/.env.*  # If using multiple environments
+functions/.firebase/
+
+# Firebase hosting cache
+.firebasehosting.*

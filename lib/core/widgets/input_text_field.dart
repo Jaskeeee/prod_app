@@ -27,7 +27,7 @@ class _InputTextFieldState extends State<InputTextField> {
         depth: -6,
         intensity: 0.6,
         surfaceIntensity: 0.2,
-        color: const Color(0xFF1E1E1E), 
+        color: NeumorphicTheme.baseColor(context), 
         lightSource: LightSource.topLeft,
         boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
       ),
@@ -37,17 +37,15 @@ class _InputTextFieldState extends State<InputTextField> {
         child: TextField(
           controller: widget.controller,
           obscureText: widget.obscureText,
-          style: const TextStyle(color: Colors.white),
           decoration: InputDecoration(
             suffixIcon: IconButton(
               onPressed:widget.onTap,
               icon: Icon(
                 widget.suffixIcon,
-                color: Colors.grey,              
               ),
             ),
             hintText: widget.hintText, 
-            hintStyle: const TextStyle(color: Colors.white54),
+            hintStyle: TextStyle(color:NeumorphicTheme.defaultTextColor(context)),
             border: InputBorder.none,
           ),
         ),

@@ -1,5 +1,7 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:prod_app/core/data/side_bar_item_data.dart';
+import 'package:prod_app/feature/auth/presentation/cubits/auth_cubit.dart';
 
 class SideBar extends StatefulWidget {
   const SideBar({super.key});
@@ -14,15 +16,13 @@ class _SideBarState extends State<SideBar> {
   Widget build(BuildContext context) {
     final data = SideBarItemData();
     return Neumorphic(
-      margin: EdgeInsets.fromLTRB(20, 40, 20, 40),
+      margin: EdgeInsets.fromLTRB(20, 30, 20, 30),
       style: NeumorphicStyle(
         depth: 10,
         surfaceIntensity:0.4,
         intensity: 0.8,
         color: NeumorphicTheme.baseColor(context),
         boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(80)),
-        shadowLightColor: const Color.fromARGB(255, 45, 45, 45),
-        shadowDarkColor: Colors.black87,
       ),
       child: Container(
         padding: EdgeInsets.only(left: 20, right: 20, top: 50, bottom: 50),
@@ -36,8 +36,8 @@ class _SideBarState extends State<SideBar> {
             ),
             Spacer(),
             IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.logout, color: Colors.grey.shade700),
+              onPressed: ()=>context.read<AuthCubit>().logout(),
+              icon: Icon(Icons.logout,),
             ),
           ],
         ),
@@ -55,7 +55,9 @@ class _SideBarState extends State<SideBar> {
         }),
         child: Icon(
           data.items[index].icon,
-          color: isSelected ? Colors.white : Colors.grey.shade700,
+          color: isSelected 
+          ? NeumorphicTheme.accentColor(context) 
+          : NeumorphicTheme.defaultTextColor(context),
           size: 30,
         ),
       ),
