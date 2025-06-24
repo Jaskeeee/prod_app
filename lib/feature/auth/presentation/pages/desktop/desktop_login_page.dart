@@ -1,9 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:prod_app/core/constants/constant.dart';
 import 'package:prod_app/core/widgets/action_button.dart';
+import 'package:prod_app/feature/auth/data/helper/auth_helper.dart';
 import 'package:prod_app/feature/auth/presentation/components/auth_divider.dart';
 import 'package:prod_app/core/widgets/input_text_field.dart';
-import 'package:prod_app/feature/auth/presentation/components/google_signin_button.dart';
+import 'package:prod_app/feature/auth/presentation/components/service_signin_button.dart';
 import 'package:prod_app/feature/auth/presentation/cubits/auth_cubit.dart';
 
 class DesktopLoginPage extends StatefulWidget {
@@ -17,45 +19,9 @@ class DesktopLoginPage extends StatefulWidget {
 class _DesktopLoginPageState extends State<DesktopLoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController pwdController = TextEditingController();
+  final AuthHelper _authHelper = AuthHelper();
   bool pwdObscure = true;
-
-  void showError(String message) {
-    final messenger = ScaffoldMessenger.of(context);
-    messenger.showMaterialBanner(
-      MaterialBanner(
-        backgroundColor: Colors.red,
-        dividerColor: Colors.red,
-        contentTextStyle: TextStyle(
-          color: NeumorphicTheme.accentColor(context),
-        ),
-        content: Text(message),
-        actions: [
-          IconButton(
-            onPressed: () => messenger.hideCurrentMaterialBanner(),
-            icon: Icon(
-              Icons.close,
-              color: NeumorphicTheme.accentColor(context),
-            ),
-          ),
-        ],
-      ),
-    );
-    Future.delayed(const Duration(seconds: 3), () {
-      messenger.hideCurrentMaterialBanner();
-    });
-  }
-
-  void login() {
-    final String email = emailController.text;
-    final String pwd = pwdController.text;
-    final authCubit = context.read<AuthCubit>();
-    if (email.isNotEmpty && pwd.isNotEmpty) {
-      authCubit.login(email, pwd);
-    } else {
-      showError("Both Email & Password is Required in Order to Sign in!");
-    }
-  }
-
+  
     @override
     Widget build(BuildContext context) {
       return Scaffold(
@@ -88,14 +54,14 @@ class _DesktopLoginPageState extends State<DesktopLoginPage> {
                       fontSize: 35,
                     ),
                   ),
-                  SizedBox(height: 15),
-                  NeumorphicText(
-                    "Let's get you back on track!",
-                    style: NeumorphicStyle(
-                      color: NeumorphicTheme.defaultTextColor(context),
-                    ),
-                    textStyle: NeumorphicTextStyle(fontSize: 18),
+                SizedBox(height: 15),
+                NeumorphicText(
+                  "Let's get you back on track!",
+                  style: NeumorphicStyle(
+                    color: NeumorphicTheme.defaultTextColor(context),
                   ),
+                  textStyle: NeumorphicTextStyle(fontSize: 18),
+                ),
                   SizedBox(height: 30),
                   InputTextField(
                     suffixIcon: Icons.mail_outline,
@@ -118,16 +84,29 @@ class _DesktopLoginPageState extends State<DesktopLoginPage> {
                   SizedBox(height: 40),
                   Align(
                     alignment: Alignment.center,
-                    child: ActionButton(onTap: () => login(), title: "Sign in"),
+                    child: ActionButton(
+                      onTap: () => _authHelper.login(
+                        context,
+                        emailController,
+                        pwdController
+                      ), title: "Sign in"),
                   ),
                   SizedBox(height: 40),
                   AuthDivider(),
                   SizedBox(height: 40),
-                  Align(
-                    alignment: Alignment.center,
-                    child: GoogleSigninButton(
-                      onTap: () => context.read<AuthCubit>().googleSignIn(),
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ServiceSigninButton(
+                        svg: googleSvg,
+                        onTap: () => context.read<AuthCubit>().googleSignIn(),
+                      ),
+                      SizedBox(width:20,),
+                      ServiceSigninButton(
+                        svg: microsoftSvg,
+                        onTap: (){},
+                      ),
+                    ],
                   ),
                   SizedBox(height: 30),
                   Row(
@@ -163,7 +142,7 @@ class _DesktopLoginPageState extends State<DesktopLoginPage> {
           ),
         ),
         floatingActionButton: IconButton(
-          onPressed: () => login(),
+          onPressed: (){print("you pressed it lmao");},
           icon: Icon(
             Icons.light_mode_outlined,
             color: NeumorphicTheme.defaultTextColor(context),

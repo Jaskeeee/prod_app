@@ -1,12 +1,13 @@
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:prod_app/core/constants/constant.dart';
 
-class GoogleSigninButton extends StatelessWidget {
+class ServiceSigninButton extends StatelessWidget {
+  final String svg;
   final void Function() onTap;
-  const GoogleSigninButton({
+  const ServiceSigninButton({
     super.key,
-    required this.onTap
+    required this.onTap,
+    required this.svg
   });
 
   @override
@@ -23,7 +24,7 @@ class GoogleSigninButton extends StatelessWidget {
       ),
       padding: EdgeInsets.all(20),
       child: SvgPicture.asset(
-        googleSvg,
+        svg,
         width: 30,
         height: 30,
       ),

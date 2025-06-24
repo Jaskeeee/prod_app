@@ -111,4 +111,14 @@ class FirebaseAuthRepo implements AppUserRepo{
       throw Exception("Unable sign in user using google:$e");
     }
   }
+  
+  @override
+  Future<AppUser?> userMicrosoftSignIn()async{
+    try{
+      print("Coming soon!");
+    }
+    catch(e){
+      throw Exception("Unable to Sign in using Microsoft:$e");
+    }
+  }
 }

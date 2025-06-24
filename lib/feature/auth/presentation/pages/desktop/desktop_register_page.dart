@@ -1,9 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:prod_app/core/constants/constant.dart';
 import 'package:prod_app/core/widgets/action_button.dart';
+import 'package:prod_app/feature/auth/data/helper/auth_helper.dart';
 import 'package:prod_app/feature/auth/presentation/components/auth_divider.dart';
 import 'package:prod_app/core/widgets/input_text_field.dart';
-import 'package:prod_app/feature/auth/presentation/components/google_signin_button.dart';
+import 'package:prod_app/feature/auth/presentation/components/service_signin_button.dart';
 import 'package:prod_app/feature/auth/presentation/cubits/auth_cubit.dart';
 
 class DesktopRegisterPage extends StatefulWidget {
@@ -19,59 +21,13 @@ class _DesktopLoginPageState extends State<DesktopRegisterPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController pwdController = TextEditingController();
   final TextEditingController confPwdController = TextEditingController();
+  final AuthHelper _authHelper = AuthHelper();
 
   bool pwdObscure = true;
   bool confPwdObscure = true;
   bool showPasswordField = false;
 
-  void showError(String message) {
-    final messenger = ScaffoldMessenger.of(context);
-    messenger.showMaterialBanner(
-      MaterialBanner(
-        backgroundColor: Colors.red,
-        dividerColor: Colors.red,
-        contentTextStyle: TextStyle(
-          color: NeumorphicTheme.accentColor(context),
-        ),
-        content: Text(message),
-        actions: [
-          IconButton(
-            onPressed: () => messenger.hideCurrentMaterialBanner(),
-            icon: Icon(
-              Icons.close,
-              color: NeumorphicTheme.accentColor(context),
-            ),
-          ),
-        ],
-      ),
-    );
-    Future.delayed(const Duration(seconds: 3), () {
-      messenger.hideCurrentMaterialBanner();
-    });
-  }
-
-  void register() {
-    final String name = nameController.text.trim();
-    final String email = emailController.text.trim();
-    final String pass = pwdController.text;
-    final String confpass = confPwdController.text;
-
-    final authCubit = context.read<AuthCubit>();
-
-    if (name.isNotEmpty && email.isNotEmpty) {
-      if (pass.isNotEmpty && confpass.isNotEmpty) {
-        if (pass == confpass) {
-          authCubit.register(name, email, pass);
-        } else {
-          showError("Passwords do not match!");
-        }
-      } else {
-        showError("Please enter both password fields.");
-      }
-    } else {
-      showError("Name and Email are required.");
-    }
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -167,7 +123,13 @@ class _DesktopLoginPageState extends State<DesktopRegisterPage> {
                             Align(
                               alignment: Alignment.center,
                               child: ActionButton(
-                                onTap: () => register(),
+                                onTap: () => _authHelper.register(
+                                  context,
+                                  nameController,
+                                  emailController,
+                                  pwdController,
+                                  confPwdController
+                                ),
                                 title: "Register",
                               ),
                             ),
@@ -200,7 +162,7 @@ class _DesktopLoginPageState extends State<DesktopRegisterPage> {
                                     });
                                   }
                                   else{
-                                    showError("Name and Email are required in order to Register!");
+                                    _authHelper.showError(context,"Name and Email are required in order to Register!");
                                   }
                                 },
                                 title: "Next",
@@ -212,9 +174,19 @@ class _DesktopLoginPageState extends State<DesktopRegisterPage> {
                 SizedBox(height: 40),
                 AuthDivider(),
                 SizedBox(height: 40),
-                Align(
-                  alignment: Alignment.center,
-                  child: GoogleSigninButton(onTap: () {}),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ServiceSigninButton(
+                        svg: googleSvg,
+                        onTap: () => context.read<AuthCubit>().googleSignIn(),
+                      ),
+                      SizedBox(width:20,),
+                      ServiceSigninButton(
+                        svg: microsoftSvg,
+                        onTap: (){},
+                      ),
+                    ],
                 ),
                 SizedBox(height: 30),
                 Row(

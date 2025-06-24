@@ -7,4 +7,5 @@ abstract class AppUserRepo {
   Future<AppUser?> registerAppUser(String name, String email,String password);
   Future<void> signOutAppUser();
   Future<AppUser?> userGoogleSignIn();
+  Future<AppUser?> userMicrosoftSignIn();
 }

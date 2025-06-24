@@ -6,7 +6,7 @@ import 'package:prod_app/feature/auth/data/firebase_auth_repo.dart';
 import 'package:prod_app/feature/auth/presentation/cubits/auth_cubit.dart';
 import 'package:prod_app/feature/auth/presentation/cubits/auth_states.dart';
 import 'package:prod_app/feature/auth/presentation/pages/auth_page_loader.dart';
-import 'package:prod_app/feature/home/presentation/pages/desktop/desktop_home_page.dart';
+import 'package:prod_app/feature/home/presentation/pages/home_page_loader.dart';
 
 class App extends StatelessWidget {
   final FirebaseAuthRepo firebaseAuthRepo = FirebaseAuthRepo();
@@ -23,11 +23,11 @@ class App extends StatelessWidget {
       child: NeumorphicApp(
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.dark,
-        darkTheme: lighttheme,
+        darkTheme: darktheme,
         home: BlocConsumer<AuthCubit, AuthStates>(
           builder: (context, state) {
             if (state is Authenticated) {
-              return DesktopHomePage(user:state.user,);
+              return HomePageLoader(user: state.user);
             } else if (state is Unauthenticated){
               return AuthPageLoader();
             }

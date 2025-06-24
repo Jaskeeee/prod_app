@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:prod_app/core/constants/constant.dart';
 import 'package:prod_app/feature/auth/presentation/pages/desktop/desktop_login_page.dart';
 import 'package:prod_app/feature/auth/presentation/pages/desktop/desktop_register_page.dart';
+import 'package:prod_app/feature/auth/presentation/pages/mobile/mobile_login_page.dart';
+import 'package:prod_app/feature/auth/presentation/pages/mobile/mobile_register_page.dart';
 
 class AuthPageLoader extends StatefulWidget {
   const AuthPageLoader({super.key});
@@ -16,15 +19,30 @@ class _AuthPageLoaderState extends State<AuthPageLoader> {
   });
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
     if(signUpState){
-      return DesktopRegisterPage(
+      if(width>ScreenBreakPoints.mobile){
+        return DesktopRegisterPage(
         toggleAuth:_toggleLoggin,
       );
+      }
+      else{
+        return MobileRegisterPage(
+          toggleAuth: _toggleLoggin,
+        );
+      }
+      
     }
     else{
-      return DesktopLoginPage(
-        toggleAuth:_toggleLoggin,
+      if(width>ScreenBreakPoints.mobile){
+        return DesktopLoginPage(toggleAuth: _toggleLoggin);
+      }
+      else{
+        return MobileLoginPage(
+          toggleAuth:_toggleLoggin,
       );
+      }
+      
     }
   }
 }

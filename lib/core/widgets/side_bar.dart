@@ -36,8 +36,13 @@ class _SideBarState extends State<SideBar> {
             ),
             Spacer(),
             IconButton(
+              onPressed:(){}, 
+              icon:Icon(Icons.light_mode_outlined,size: 30,),
+            ),
+            SizedBox(height: 30,),
+            IconButton(
               onPressed: ()=>context.read<AuthCubit>().logout(),
-              icon: Icon(Icons.logout,),
+              icon: Icon(Icons.logout,size: 30,),
             ),
           ],
         ),
