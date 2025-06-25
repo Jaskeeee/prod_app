@@ -14,6 +14,9 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    NeumorphicThemeData themeData = ThemeMode.system == ThemeMode.dark 
+    ?darktheme:lighttheme;
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -22,7 +25,6 @@ class App extends StatelessWidget {
       ],
       child: NeumorphicApp(
         debugShowCheckedModeBanner: false,
-        themeMode: ThemeMode.dark,
         darkTheme: darktheme,
         home: BlocConsumer<AuthCubit, AuthStates>(
           builder: (context, state) {

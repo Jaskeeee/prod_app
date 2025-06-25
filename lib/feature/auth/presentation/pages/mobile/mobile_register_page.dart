@@ -17,6 +17,7 @@ class MobileRegisterPage extends StatefulWidget {
 }
 
 class _MobileRegisterPageState extends State<MobileRegisterPage> {
+
   final TextEditingController emailController = TextEditingController();
   final TextEditingController pwdController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
@@ -29,15 +30,27 @@ class _MobileRegisterPageState extends State<MobileRegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: NeumorphicTheme.baseColor(context),
+        actions: [
+          IconButton(
+            onPressed:(){}, 
+            icon: Icon(
+              Icons.light_mode_outlined,
+              size: 30,
+            )
+          )  
+        ],
+      ),
       backgroundColor: NeumorphicTheme.baseColor(context),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
+          padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 40),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 100),
+              SizedBox(height: 20),
               Row(
                 children: [
                   Visibility(

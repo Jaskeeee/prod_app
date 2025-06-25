@@ -46,7 +46,7 @@ class _DesktopLoginPageState extends State<DesktopLoginPage> {
                     "Sign in",
                     style: NeumorphicStyle(
                       color: NeumorphicTheme.accentColor(context),
-                      intensity: 0.1,
+                      intensity: 0.8,
                       depth: 4,
                     ),
                     textStyle: NeumorphicTextStyle(

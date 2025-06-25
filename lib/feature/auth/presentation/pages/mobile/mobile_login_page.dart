@@ -24,6 +24,17 @@ class _MobileLoginPageState extends State<MobileLoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: NeumorphicTheme.baseColor(context),
+        actions: [
+          IconButton(
+            onPressed: (){},
+            icon:Icon(
+              Icons.light_mode_outlined,
+            )
+          )
+        ],
+      ),
       backgroundColor: NeumorphicTheme.baseColor(context),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -33,7 +44,7 @@ class _MobileLoginPageState extends State<MobileLoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 100),
+                SizedBox(height: 20),
                 NeumorphicText(
                   "Sign in",
                   style: NeumorphicStyle(
