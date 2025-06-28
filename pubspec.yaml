@@ -43,6 +43,8 @@ dependencies:
   flutter_bloc: ^9.1.1
   loading_animation_widget: ^1.3.0
   circlify: ^1.2.3
+  simple_heatmap_calendar: ^0.4.0
+  flex_color_picker: ^3.7.1
 
 dev_dependencies:
   flutter_test:

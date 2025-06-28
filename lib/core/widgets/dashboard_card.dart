@@ -18,6 +18,7 @@ class DashboardCard extends StatelessWidget {
             height: side,
             child: Neumorphic(
               style: NeumorphicStyle(
+                lightSource: LightSource.top,
                 depth: 6,
                 intensity: 0.8,
                 surfaceIntensity: 0.2,

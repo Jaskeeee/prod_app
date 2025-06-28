@@ -68,8 +68,6 @@ class _DesktopLoginPageState extends State<DesktopRegisterPage> {
                       "Register",
                       style: NeumorphicStyle(
                         color: NeumorphicTheme.accentColor(context),
-                        intensity: 0.1,
-                        depth: 4,
                       ),
                       textStyle: NeumorphicTextStyle(
                         fontWeight: FontWeight.bold,

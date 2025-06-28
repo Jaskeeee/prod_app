@@ -18,6 +18,7 @@ class _SideBarState extends State<SideBar> {
     return Neumorphic(
       margin: EdgeInsets.fromLTRB(20, 30, 20, 30),
       style: NeumorphicStyle(
+        lightSource: LightSource.top,
         depth: 10,
         surfaceIntensity:0.4,
         intensity: 0.8,

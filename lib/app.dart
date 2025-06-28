@@ -14,8 +14,6 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NeumorphicThemeData themeData = ThemeMode.system == ThemeMode.dark 
-    ?darktheme:lighttheme;
 
     return MultiBlocProvider(
       providers: [

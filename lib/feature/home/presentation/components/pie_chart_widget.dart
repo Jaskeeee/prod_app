@@ -1,6 +1,6 @@
 import 'package:circlify/circlify.dart';
 import 'package:circlify/circlify_item.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 
 class PieChartWidget extends StatelessWidget {
   PieChartWidget({super.key});
