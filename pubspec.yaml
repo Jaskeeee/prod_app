@@ -45,6 +45,8 @@ dependencies:
   circlify: ^1.2.3
   simple_heatmap_calendar: ^0.4.0
   flex_color_picker: ^3.7.1
+  flutter_iconpicker_plus: ^3.2.3
+  table_calendar: ^3.2.0
 
 dev_dependencies:
   flutter_test:

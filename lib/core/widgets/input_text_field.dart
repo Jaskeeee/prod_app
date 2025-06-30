@@ -25,7 +25,7 @@ class _InputTextFieldState extends State<InputTextField> {
     return Neumorphic(
       style: NeumorphicStyle(
         depth: -6,
-        intensity: 0.6,
+        intensity: 0.7,
         surfaceIntensity: 0.2,
         color: NeumorphicTheme.baseColor(context), 
         lightSource: LightSource.topLeft,

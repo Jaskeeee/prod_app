@@ -1,8 +1,7 @@
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
-import 'package:prod_app/core/widgets/rect_dashboard_card.dart';
 import 'package:prod_app/core/widgets/side_bar.dart';
 import 'package:prod_app/feature/auth/domain/model/app_user.dart';
-import 'package:prod_app/feature/home/presentation/components/category_list_widget.dart';
+import 'package:prod_app/feature/home/presentation/pages/desktop/components/list_widget.dart';
 import 'package:prod_app/feature/home/presentation/pages/desktop/components/pie_chart_elements.dart';
 import 'package:prod_app/feature/home/presentation/pages/desktop/dialogs/category_dialogs.dart';
 
@@ -29,8 +28,8 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
             SideBar(),
             SizedBox(width: 20),
             PieChartElements(),
-            Expanded(child: CategoryListWidget()),
-            Expanded(child: RectDashboardCard()),
+            Expanded(child: ListWidget(title: "Categories",leadingIcon:Icons.category_outlined,)),
+            Expanded(child: ListWidget(title: "Tasks",leadingIcon: Icons.list_alt,)),
           ],
         ),
         floatingActionButton: NeumorphicFloatingActionButton(

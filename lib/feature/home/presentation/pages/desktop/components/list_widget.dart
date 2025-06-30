@@ -1,8 +1,14 @@
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:prod_app/core/widgets/rect_dashboard_card.dart';
 
-class CategoryListWidget extends StatelessWidget {
-  const CategoryListWidget({super.key});
+class ListWidget extends StatelessWidget {
+  final IconData leadingIcon;
+  final String title;
+  const ListWidget({
+    super.key,
+    required this.leadingIcon,
+    required this.title
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +26,7 @@ class CategoryListWidget extends StatelessWidget {
                   child: Row(
                     children: [
                       NeumorphicIcon(
-                        Icons.category_outlined,
+                        leadingIcon,
                         size: 30,
                         style: NeumorphicStyle(
                           color: NeumorphicTheme.accentColor(context)
@@ -28,7 +34,7 @@ class CategoryListWidget extends StatelessWidget {
                       ),
                       SizedBox(width:10,),
                       NeumorphicText(
-                        "Categories:",
+                        title,
                         style: NeumorphicStyle(color: NeumorphicTheme.accentColor(context)),
                         textStyle: NeumorphicTextStyle(
                           fontSize: 30,
