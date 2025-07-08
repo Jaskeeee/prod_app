@@ -23,7 +23,7 @@ class App extends StatelessWidget {
       ],
       child: NeumorphicApp(
         debugShowCheckedModeBanner: false,
-        darkTheme: darktheme,
+        darkTheme: lighttheme,
         home: BlocConsumer<AuthCubit, AuthStates>(
           builder: (context, state) {
             if (state is Authenticated) {

@@ -120,5 +120,6 @@ class FirebaseAuthRepo implements AppUserRepo{
     catch(e){
       throw Exception("Unable to Sign in using Microsoft:$e");
     }
+    return null;
   }
 }

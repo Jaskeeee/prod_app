@@ -17,7 +17,8 @@ class CategoryDialogs {
       builder: (context) {
         int selectedIndex = 0;
         bool toggle = false;
-        Color? selectedColor,selectedNoteColor = Colors.blue;
+        Color? selectedColor = Colors.blue;
+        Color? selectedNoteColor = Colors.blue;
         DateTime selectedDate;
         IconData? selectedIcon = Icons.sentiment_satisfied_alt_rounded;
 
@@ -78,6 +79,12 @@ class CategoryDialogs {
                                 height: 50,
                               ),
                               title: "Selected Color",
+                              trailing: Text(
+                                "#${selectedColor!.hex}",
+                                style: TextStyle(
+                                  fontSize: 18
+                                ),
+                              ),
                             ),
                             SizedBox(height: 20),
                             RectCatgeogryTile(
@@ -87,6 +94,7 @@ class CategoryDialogs {
                                 size: 50,
                               ),
                               title: "Selected Icon",
+                              onTap:(){},
                             ),
                             SizedBox(height: 20),
                             Expanded(

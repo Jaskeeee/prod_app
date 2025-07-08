@@ -17,7 +17,22 @@ class PieChartElements extends StatelessWidget {
     return Column(
       children: [
         Expanded(
-          child: DashboardCard(child: Circlify(items: items)),
+          child: DashboardCard(
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Circlify(items: items),
+                Text(
+                  "20%",
+                  style: TextStyle(
+                    color: NeumorphicTheme.accentColor(context),
+                    fontSize: 80,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
         Expanded(
           child: DashboardCard(
